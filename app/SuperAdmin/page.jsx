@@ -25,21 +25,14 @@ const Filter = () => {
     const [topiclar, setTopiclar] = useState([]);
     const [filteredMavzula, setFilteredMavzula] = useState([]);
     const [filterValue, setFilterValue] = useState({ newIsm: "", newSinfi: "", school: "" });
-    const [hide, setHide] = useState(false)
-
-    const handleHide = () => {
-        setHide(!hide)
-    }
-
-
-
 
     useEffect(() => {
         const fetchData = async () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -96,7 +89,8 @@ const Filter = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -116,7 +110,8 @@ const Filter = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -136,18 +131,14 @@ const Filter = () => {
         const fetchData = async () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
-
-            // Calculate percentage of items where newDarsQoldirish === "Sababli"
             const sababliCount = filteredTopics.filter((t) => t.newDarsQoldirish === "Sababli").length;
             const sababliPercentage = (sababliCount / filteredTopics.length) * 100;
             setPercentageSababli(sababliPercentage.toFixed(2));
-
-            // Calculate percentage of items where newDarsQoldirish !== "Sababli"
             const notSababliCount = filteredTopics.filter((t) => t.newDarsQoldirish !== "Sababli").length;
             const notSababliPercentage = (notSababliCount / filteredTopics.length) * 100;
             setPercentageNotSababli(notSababliPercentage.toFixed(2));
@@ -160,14 +151,13 @@ const Filter = () => {
 
 
     const [chartData, setChartData] = useState({});
-    const [descriptiveChartData, setDescriptiveChartData] = useState([/* your data for descriptive chart */]);
-
     useEffect(() => {
         const fetchData = async () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);

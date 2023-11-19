@@ -40,7 +40,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -97,7 +98,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -117,7 +119,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -138,7 +141,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -167,7 +171,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);

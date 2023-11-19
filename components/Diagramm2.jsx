@@ -42,6 +42,7 @@ const App = () => {
             const res = await fetch('/api/topics', {
                 cache: 'no-store',
             });
+
             if (!res.ok) {
                 throw new Error('Mavzular yuklanmadi');
             }
@@ -49,17 +50,19 @@ const App = () => {
             const data = await res.json();
             const topiclar = data?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === '2-sektor');
+            if (!topiclar) {
+                console.error('Topiclar is undefined.');
+                return;
+            }
 
-            // Count items where newDarsQoldirish !== "Sababli"
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
+
             const notSababliCount = filteredTopics.filter((t) => t.newDarsQoldirish !== 'Sababli').length;
             setCountNotSababli(notSababliCount);
-
-            // Calculate percentage of items where newDarsQoldirish !== "Sababli"
             const notSababliPercentage = (notSababliCount / filteredTopics.length) * 100;
             setPercentageNotSababli(notSababliPercentage.toFixed(2));
 
-            // Update chart data state
             setChartDataNotSababli({
                 options: {
                     chart: {
@@ -96,7 +99,8 @@ const App = () => {
                     return;
                 }
 
-                const filteredTopics = topiclar.filter((t) => t.MFY === '2-sektor');
+                const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
                 setTopiclar(filteredTopics);
                 setFilteredMavzula(filteredTopics);
@@ -161,7 +165,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -181,7 +186,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -202,7 +208,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
@@ -230,7 +237,8 @@ const App = () => {
             const a = await getTopics();
             const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+
 
             setTopiclar(filteredTopics);
             setFilteredMavzula(filteredTopics);
